@@ -2,24 +2,27 @@
 <header>
     <div class="mini-navbar-wrap">
         <div class="logo-wrap">
-            <p class="logo"><a id="logo" href="/"><img id="logo-img" src="" alt="" /></a></p>
+            <p class="logo">
+                <a id="logo" routerLink="/home">
+                    <img id="logo-img" src="" alt="" />delicious.com</a>
+                </p>
         </div>
         <div class="mini-navbar">
             <ul *ngIf="!isLoggedIn" >
                 <li>
-                    <a routerLink="/login" >Login</a>
+                    <a routerLink="/login" >Вход</a>
                 </li>
                 <li>
-                    <a routerLink="/register">Register</a>
+                    <a routerLink="/register">Регистрирай се</a>
                 </li>
             </ul>
 
             <ul *ngIf="isLoggedIn" >
                 <li>
-                    <a routerLink="/profile" >Добре дошъл {{firstName}}</a>
+                    <a routerLink="/profile" >Добре дошъл, {{firstName}}</a>
                 </li>
                 <li (click)="logout()">
-                    <a>Logout</a>
+                    <a>Излез</a>
                 </li>
             </ul>
         </div>

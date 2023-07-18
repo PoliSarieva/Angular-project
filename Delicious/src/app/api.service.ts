@@ -11,6 +11,6 @@ export class ApiService {
 
   getRecepts () {
     const dbUrl = environment.firebase.databaseURL;
-    return this.http.get('https://angular-project-89768-default-rtdb.europe-west1.firebasedatabase.app/recepts.json');
+    return this.http.get(`${dbUrl}/recepts.json`);
   }
 }
