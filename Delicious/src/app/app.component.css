@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+body {
+  color:rgb(241, 133, 10);
+  background: rgb(255,249,205);
+  background: linear-gradient(94deg, rgba(255,249,205,1) 0%, rgba(255,189,138,1) 100%);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  width: 97vw;
+  font-family: 'Merienda', cursive;
+}

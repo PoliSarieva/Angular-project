@@ -1,0 +1,46 @@
+
+<header>
+    <div class="mini-navbar-wrap">
+        <div class="logo-wrap">
+            <p class="logo"><a id="logo" href="/"><img id="logo-img" src="" alt="" /></a></p>
+        </div>
+        <div class="mini-navbar">
+            <ul *ngIf="!isLoggedIn" >
+                <li>
+                    <a routerLink="/login" >Login</a>
+                </li>
+                <li>
+                    <a routerLink="/register">Register</a>
+                </li>
+            </ul>
+
+            <ul *ngIf="isLoggedIn" >
+                <li>
+                    <a routerLink="/profile" >Добре дошъл {{firstName}}</a>
+                </li>
+                <li (click)="logout()">
+                    <a>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li *ngIf="isLoggedIn">
+                <a routerLink="">Добави рецепта</a>
+            </li>
+            <li>
+                <a routerLink="/appetizers">Предястия</a>
+            </li>
+            <li>
+                <a routerLink="/main-dishes">Основни ястия</a>
+            </li>
+            <li>
+                <a routerLink="/desserts">Десерти</a>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+

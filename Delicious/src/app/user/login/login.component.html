@@ -1,0 +1,14 @@
+<!-- Login Page (Only for Guest users) -->
+<section id="login">
+    <div class="form">
+        <h2>Login</h2>
+        <form class="login-form">
+            <input type="text" name="email" id="email" placeholder="email" #inputEmail/>
+            <input type="password" name="password" id="password" placeholder="password" #inputPassword/>
+            <button (click)="login(inputEmail.value, inputPassword.value)">login</button>
+            <p class="message">
+                Not registered? <a href="#">Create an account</a>
+            </p>
+        </form>
+    </div>
+</section>
