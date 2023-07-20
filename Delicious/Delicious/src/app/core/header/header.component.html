@@ -1,0 +1,49 @@
+
+<header>
+    <div class="mini-navbar-wrap">
+        <div class="logo-wrap">
+            <p class="logo">
+                <a id="logo" routerLink="/home">
+                    <img id="logo-img" src="" alt="" />delicious.com</a>
+                </p>
+        </div>
+        <div class="mini-navbar">
+            <ul *ngIf="!isLoggedIn" >
+                <li>
+                    <a routerLink="/login" >Вход</a>
+                </li>
+                <li>
+                    <a routerLink="/register">Регистрирай се</a>
+                </li>
+            </ul>
+
+            <ul *ngIf="isLoggedIn" >
+                <li>
+                    <a routerLink="/profile" >Добре дошъл, {{firstName}}</a>
+                </li>
+                <li (click)="logout()">
+                    <a>Излез</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li *ngIf="isLoggedIn">
+                <a routerLink="">Добави рецепта</a>
+            </li>
+            <li>
+                <a routerLink="/appetizers">Предястия</a>
+            </li>
+            <li>
+                <a routerLink="/main-dishes">Основни ястия</a>
+            </li>
+            <li>
+                <a routerLink="/desserts">Десерти</a>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+

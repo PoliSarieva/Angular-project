@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-project-89768": {
+      "hosting": {
+        "Delicious": [
+          "angular-project-89768"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-project-89768"
+  }
+}
