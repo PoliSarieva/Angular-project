@@ -8,4 +8,6 @@ export const environment = {
     authDomain: 'angular-project-89768.firebaseapp.com',
     messagingSenderId: '716723614555',
   },
+  //firebase.initializeApp(firebase);
 };
+

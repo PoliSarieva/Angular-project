@@ -2,22 +2,12 @@
 <section id="dashboard">
     <!-- Display a div with information about every post (if any)-->
 
-    <div class="fruit">
+    <div class="fruit" *ngFor="let rec of receptList">
         <!--<img src="./images/fruit 1.png" alt="example1" />-->
-        <h3 class="title">ЗЕЛЕНА САЛАТА С ПИЛЕ, ЧЕРИ ДОМАТИ, СИРЕНЕ ПАРМЕЗАН И КРУТОНИ</h3>
-        <img src="assets/cook_01.jpg" alt="example1" />
+        <h3 class="title">{{ rec.title }}</h3>
+        <img src="{{ rec.img}}" alt="example1" />
         
-        <a class="details-btn" routerLink="/details">More Info</a>
-    </div>
-    <div class="fruit">
-        <h3 class="title"> САЛАТА</h3>
-        <img src="assets/cook_01.jpg" alt="example1" />
-        <a class="details-btn" routerLink="/details">More Info</a>
-    </div>
-    <div class="fruit">
-        <h3 class="title">салата 1</h3>
-        <img src="assets/cook_01.jpg" alt="example1" />
-        <a class="details-btn" routerLink="/details">More Info</a>
+        <a class="details-btn" routerLink=":{{ rec._id}}">More Info</a>
     </div>
 
 </section>

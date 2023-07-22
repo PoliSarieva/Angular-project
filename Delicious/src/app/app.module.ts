@@ -8,20 +8,28 @@ import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { CoreModule } from './core/core.module';
 import { ReceptsModule } from './recepts/recepts.module';
-import { DetailsComponent } from './details/details.component';
+import { DetailsComponent } from './recept/details/details.component';
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore,getFirestore, FirestoreModule } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireDatabaseModule, AngularFireList } from "@angular/fire/compat/database";
+import {  } from "@angular/fire/compat/firestore";
+ 
+
 import { FormsModule } from '@angular/forms';
+import { ReceptModule } from './recept/recept.module';
+import { Firestore } from '@angular/fire/firestore/firebase';
+import { AngularFirestore } from '@angular/fire/compat/firestore/';
 
 @NgModule({
   declarations: [
@@ -37,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     UserModule,
     ReceptsModule,
+    ReceptModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
@@ -48,6 +57,11 @@ import { FormsModule } from '@angular/forms';
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
+    AngularFireModule.initializeApp(environment.firebase),
+    FirestoreModule,
+    AngularFireDatabaseModule,
+  
+    
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
