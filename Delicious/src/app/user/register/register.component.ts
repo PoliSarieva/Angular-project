@@ -15,16 +15,16 @@ export class RegisterComponent {
       password: ["", [Validators.required, Validators.minLength(6)]],
       rePassword: ["", [Validators.required]]
     },
-    {
-      validators: [matchPasswordsValidator('password', 'rePassword')]
-    }
+      {
+        validators: [matchPasswordsValidator('password', 'rePassword')]
+      }
     )
   });
 
-  constructor (private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   onSubmit() {
     console.log(this.form.value);
-    
+
   }
 }

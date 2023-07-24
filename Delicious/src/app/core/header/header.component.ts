@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -8,19 +9,31 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
   constructor(private userService: UserService, 
-              private router: Router) {}
+    private router: Router) {}
 
-  get isLoggedIn(): boolean {
-    return this.userService.isLogged;
-  }
+get isLoggedIn(): boolean {
+return this.userService.isLogged;
+}
 
-  get firstName(): string {
-    return this.userService.user?.firstName || '';
-  }
+get firstName(): string {
+return this.userService.user?.firstName || '';
+}
 
-  logout():void {
-    this.userService.logout();
-    this.router.navigate(['/']);
-  }
+logout():void {
+this.userService.logout();
+this.router.navigate(['/']);
+}
+
+
+
+  /*constructor(private apiService: ApiService) { }
+
+  ngOnInit(): void {
+    this.apiService.getData().subscribe((data) => {
+      console.log(data);
+    }
+    )
+  }*/
 }

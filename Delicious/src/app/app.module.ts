@@ -1,71 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { UserModule } from './user/user.module';
 import { CoreModule } from './core/core.module';
+import { UserModule } from './user/user.module';
 import { ReceptsModule } from './recepts/recepts.module';
-import { DetailsComponent } from './recept/details/details.component';
-
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore, FirestoreModule } from '@angular/fire/firestore';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideMessaging,getMessaging } from '@angular/fire/messaging';
-import { providePerformance,getPerformance } from '@angular/fire/performance';
-import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { provideStorage,getStorage } from '@angular/fire/storage';
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireDatabaseModule, AngularFireList } from "@angular/fire/compat/database";
-import {  } from "@angular/fire/compat/firestore";
- 
-
-import { FormsModule } from '@angular/forms';
-import { ReceptModule } from './recept/recept.module';
-import { Firestore } from '@angular/fire/firestore/firebase';
-import { AngularFirestore } from '@angular/fire/compat/firestore/';
+import { SingleReceptModule } from './single-recept/single-recept.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    DetailsComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     CoreModule,
+    HttpClientModule,
     UserModule,
     ReceptsModule,
-    ReceptModule,
+    SingleReceptModule,
     FormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging()),
-    providePerformance(() => getPerformance()),
-    provideRemoteConfig(() => getRemoteConfig()),
-    provideStorage(() => getStorage()),
-    AngularFireModule.initializeApp(environment.firebase),
-    FirestoreModule,
-    AngularFireDatabaseModule,
-  
-    
   ],
-  providers: [
-    ScreenTrackingService,UserTrackingService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,9 @@
 export interface Recept {
-    _id?: any,
-    title?: string | undefined,
-    img?: string| undefined,
-    nutrients?: string| undefined,
-    preparation?: string| undefined,
+    imageUrl: string,
+    nutrients: string,
+    preparation: string,
+    title: string,
+    _createdOn: number,
+    _id: string,
+    _ownerId: string,
 }
