@@ -19,4 +19,9 @@ export class ApiService {
     const {appUrl} = environment;
     return this.http.get<Recept>(`${appUrl}/recept/${id}`)
   }
+
+  createRecept(title: string, imageUrl: string, nutrients: string, preparation: string ) {
+    const {appUrl} = environment;
+    return this.http.post<Recept>(`${appUrl}/recept`, {title, imageUrl, nutrients, preparation })
+  }
 }

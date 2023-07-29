@@ -46,9 +46,7 @@
                 </ng-container>
             </ng-container>
 
-            {{ form.value | json }}
-
-            <button type="submit">Регистрирай ме</button>
+            <button type="submit" [disabled]="form.invalid">Регистрирай ме</button>
             <p class="message">Не си регистриран? <a routerLink="/login">Вход</a></p>
         </form>
     </div>

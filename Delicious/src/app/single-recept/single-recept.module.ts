@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail/detail.component';
 import { SingleRecRoutingModule } from './singleRec.routing.module';
 import { NewReceptComponent } from './new-recept/new-recept.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,7 @@ import { NewReceptComponent } from './new-recept/new-recept.component';
     DetailComponent, NewReceptComponent
   ],
   imports: [
-    CommonModule, SingleRecRoutingModule
+    CommonModule, SingleRecRoutingModule, FormsModule, ReactiveFormsModule
   ]
 })
 export class SingleReceptModule { }
