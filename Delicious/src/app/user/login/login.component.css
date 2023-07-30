@@ -68,6 +68,9 @@
 .form button:focus {
   background: rgb(12, 69, 57);
 }
+.form button:disabled {
+  background: rgb(144, 182, 174);
+}
 
 .container {
   position: relative;

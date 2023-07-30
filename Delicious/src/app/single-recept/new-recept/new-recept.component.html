@@ -1,0 +1,36 @@
+<section id="create">
+    <div class="form">
+        <h2>Добави рецепта</h2>
+        <form class="create-form" [formGroup]="form" (ngSubmit)="newReceptSubmit(form)">
+            
+            <input type="text" name="title" id="title" placeholder="заглавие" formControlName="title"/>
+
+            <ng-container *ngIf="form.get('title')?.touched">
+                <p class="error" *ngIf="form.get('title')?.errors?.['required']">Полето е задължително!</p>
+            </ng-container>
+
+            <input type="text" name="imageUrl" id="recept-image" placeholder="снимка" formControlName="imageUrl"/>
+
+            <ng-container *ngIf="form.get('imageUrl')?.touched">
+                <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">Полето е задължително!</p>
+            </ng-container>
+
+            <textarea id="recept-nutrients" name="nutrients" placeholder="съставки" rows="10"
+                cols="50" formControlName="nutrients"></textarea>
+
+                <ng-container *ngIf="form.get('nutrients')?.touched">
+                    <p class="error" *ngIf="form.get('nutrients')?.errors?.['required']">Полето е задължително!</p>
+                </ng-container>
+
+            <textarea id="fruit-preparation" name="preparation" placeholder="начин на приготвяне" rows="10"
+                cols="50" formControlName="preparation"></textarea>
+
+                <ng-container *ngIf="form.get('preparation')?.touched">
+                    <p class="error" *ngIf="form.get('preparation')?.errors?.['required']">Полето е задължително!</p>
+                </ng-container>
+
+            <button type="submit" [disabled]="form.invalid">Добави</button>
+        </form>
+    </div>
+</section>
+

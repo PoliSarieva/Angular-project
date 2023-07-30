@@ -1,7 +1,10 @@
 export interface Recept {
-    id: string,
+    _ownerId: string,
     title: string,
-    img: string,
+    imageUrl: string,
     nutrients: string,
     preparation: string,
+    _createdOn: number,
+    _id: string,
+    
 }
