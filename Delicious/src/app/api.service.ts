@@ -10,6 +10,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getDayRecept (id: string) {
+    const {appUrl} = environment;
+    return this.http.get<Recept>(`${appUrl}/recept/${id}`)
+  }
+
   getRecepts() {
     const {appUrl} = environment;
     return this.http.get<Recept[]>(`${appUrl}/recept`)

@@ -2,19 +2,31 @@ import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable, Provider } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
+import { UserService } from "./user/user.service";
 
 const apiUrl = environment.apiUrl;
 
 @Injectable()
 
 export class AppInterceptor implements HttpInterceptor {
-    static accessToken = '';
-    constructor() {}
-
+    
+    constructor(private userService: UserService) {}
+    
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        
         if(req.url.startsWith('/users')) {
-            req = req.clone({ url: req.url.replace('/users', apiUrl)})
+            req = req.clone({ url: req.url.replace('/users', apiUrl),
+            //headers: req.headers.set('X-Authorization', this.userService.token)
+            //setHeaders: {'X-Authorization': this.userService.token}
+                              
+        })
         }
+
+        /*if (lsToken) {
+            req = req.clone({
+                headers: req.headers.set('X-Authorization', this.userService.token)
+            })
+        }*/
         return next.handle(req);
     }
 }

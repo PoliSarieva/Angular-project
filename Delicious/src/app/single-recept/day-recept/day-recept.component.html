@@ -1,0 +1,14 @@
+<section id="details" >
+    <div id="details-wrapper" *ngIf="recept">
+        <img id="details-img" src="{{recept.imageUrl}}" alt="example1" />
+        <p id="details-title">{{recept.title}}</p>
+        <div id="info-wrapper">
+            <div id="details-description">
+                <p class="subtitle">Съставки:</p>
+                <p id="details-nutrients">{{ recept.nutrients }}</p>
+                <p class="subtitle">Начин на приготвяне:</p>
+                <p id="details-preparation">{{ recept.preparation }}</p>
+            </div>
+        </div>
+    </div>
+</section>

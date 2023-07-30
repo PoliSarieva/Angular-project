@@ -11,7 +11,6 @@ let apiUrl = environment.appUrl;
 export class UserService implements OnDestroy{
 
   user: User | undefined | null;
-  //USER_KEY = '[user]';
 
   private user$$ = new BehaviorSubject<undefined | null | User>(undefined);
   user$ = this.user$$.asObservable();
@@ -23,12 +22,7 @@ export class UserService implements OnDestroy{
   subscription: Subscription;
 
   constructor(private http: HttpClient) {
-    /*try {
-     const lsUser =  localStorage.getItem(this.USER_KEY) || "";
-     this.user = JSON.parse(lsUser);
-    } catch (error) {
-      this.user = undefined;
-    }*/
+
    this.subscription = this.user$.pipe(
     filter((val): val is User | null => val !== undefined))
     .subscribe(user => {
@@ -36,23 +30,22 @@ export class UserService implements OnDestroy{
     })
   }
 
+  //token = localStorage.getItem('token') || "";
+
+get token() {
+  return localStorage.getItem('token')|| "";
+}
+
   register(email: string, username: string, password: string, rePassword: string) {
 
     return this.http.post<any>('/users/register', { email, username, password, rePassword })
-   
+    
   }
 
   login(email: string, password: string) {
-    //TODO user is not real
-    /*this.user = {
-      email: 'john@email.com',
-      firstName: 'John',
-    };
-
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))*/
+    
     return this.http.post<any>('/users/login', { email, password })
       .pipe(tap(user => {
-        
         localStorage.setItem('token', user.accessToken);
         this.user$$.next(user)
       })

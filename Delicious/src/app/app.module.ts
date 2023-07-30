@@ -11,6 +11,7 @@ import { ReceptsModule } from './recepts/recepts.module';
 import { SingleReceptModule } from './single-recept/single-recept.module';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     AuthenticateComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     CoreModule,
