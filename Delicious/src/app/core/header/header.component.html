@@ -18,7 +18,6 @@
             </ul>
 
             <ul *ngIf="isLoggedIn" >
-                
                 <li>
                     <a routerLink="/profile" >Добре дошъл, {{firstName}}</a>
                 </li>
@@ -30,11 +29,17 @@
     </div>
     <nav>
         <ul>
-            <li>
-                <a routerLink="/main-recept">Всички рецепти</a>
-            </li>
             <li *ngIf="isLoggedIn">
-                <a routerLink="/add-recept">Добави рецепта</a>
+                <a routerLink="">Добави рецепта</a>
+            </li>
+            <li>
+                <a routerLink="/appetizers">Предястия</a>
+            </li>
+            <li>
+                <a routerLink="/main-dishes">Основни ястия</a>
+            </li>
+            <li>
+                <a routerLink="/desserts">Десерти</a>
             </li>
         </ul>
     </nav>

@@ -4,49 +4,43 @@
         <h2>Регистрация</h2>
         <form class="register-form" [formGroup]="form" (submit)="onSubmit()">
             <!--Email-->
-            <input type="text" name="email" id="register-email" placeholder="email" formControlName="email" />
+            <input type="text" name="email" id="register-email" placeholder="email"
+            formControlName="email"/>
 
             <ng-container *ngIf="form.get('email')?.touched">
                 <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email е задължителен!</p>
                 <p class="error" *ngIf="form.get('email')?.errors?.['email']">Email не е валиден!</p>
             </ng-container>
 
-            <!--username-->
             <input type="text" name="username" id="register-username" placeholder="username"
-                formControlName="username" />
+            formControlName="username"/>
 
             <ng-container *ngIf="form.get('username')?.touched">
                 <p class="error" *ngIf="form.get('username')?.errors?.['required']">Името е задължително!</p>
-                <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Името трябва да съдържа поне 4
-                    символа!</p>
+                <p class="error" *ngIf="form.get('username')?.errors?.['minLength']">Името трябва да съдържа поне 4 символа!</p>
             </ng-container>
 
-            <ng-container formGroupName="passGroup">
+            <!--password-->
+            <ng-container>
                 <!--password-->
-                <input name="password" id="password" placeholder="password" formControlName="password" />
-                <!--password-->
+                <input type="password" name="password" id="register-password" placeholder="password" formControlName="password"/>
+                
                 <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
-                    <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">Паролата е
-                        задължителнa!</p>
-                    <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']">Паролата
-                        трябва да съдържа поне 6 символа!</p>
+                    <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">Паролата е задължително!</p>
+                    <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minLength']">Паролата трябва да съдържа поне 6 символа!</p>
                 </ng-container>
 
-                <!--Repeat password-->
-                <input name="re-password" id="repeat-password" placeholder="repeat password"
-                    formControlName="rePassword" />
-
+                <!--Repeat password
+                <input type="password" name="re-password" id="repeat-password" placeholder="repeat password" formControlName="rePassword"/>
+            
                 <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
-                    <p class="error" 
-                *ngIf="
-                form.get('passGroup')?.errors?.['matchPasswordsValidator'] || form.get('passGroup')?.get('rePassword')?.errors?.['required']" >
-                    Паролите не съвпадат
-                </p>
-                    
-                </ng-container>
-            </ng-container>
+                    <p class="error" *ngIf="form.get('passGroup')?.get('rePassword')?.errors?.['required']
+                    || form.get('passGroup')?.get('rePassword')?.errors?.['required']">Паролата не съвпада!</p>
+                </ng-container>-->
 
-            <button type="submit" [disabled]="form.invalid">Регистрирай ме</button>
+            </ng-container >
+
+            <button type="submit">Регистрирай ме</button>
             <p class="message">Не си регистриран? <a routerLink="/login">Вход</a></p>
         </form>
     </div>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from "@angular/forms";
 import { matchPasswordsValidator } from '../validators/match-pass-validators';
-import { UserService } from '../user.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,30 +15,16 @@ export class RegisterComponent {
       password: ["", [Validators.required, Validators.minLength(6)]],
       rePassword: ["", [Validators.required]]
     },
-      {
-        validators: [matchPasswordsValidator('password', 'rePassword')]
-      }
+    {
+      validators: [matchPasswordsValidator('password', 'rePassword')]
+    }
     )
   });
 
-  constructor(private fb: FormBuilder, private userService: UserService,private router: Router) { }
+  constructor (private fb: FormBuilder) {}
 
   onSubmit() {
-    if (this.form.invalid) {
-      return;
-    }
-
-    const { email, username, passGroup: { password, rePassword } = {} } = this.form.value;
-    this.userService.register(email!, username!, password!, rePassword!)
-      .subscribe(user => {
-        this.userService.user = user;
-  
-        
-        this.router.navigate(['/login']);
-      }
-      );
-
-
-
+    console.log(this.form.value);
+    
   }
 }

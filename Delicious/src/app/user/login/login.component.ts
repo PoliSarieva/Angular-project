@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -10,24 +10,16 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   constructor (private userService: UserService,
-    private router: Router) {}
+                private router: Router) {}
 
-login(form: NgForm) {
+  login(form: NgForm): void {
 
-if (form.invalid) {
-return;
-}
-
-//this.userService.login();
-
-const { email, password }  = form.value;
-    this.userService.login(email!,  password!)
-      .subscribe(user => {
-        this.userService.user = user;
-        //console.log(`login: ${user}`);
-        this.router.navigate(['/']);
-      }
-      );
-this.router.navigate(['/']);
-}
+    console.log(form.value);
+    if (form.invalid) {
+      return;
+    }
+    
+    this.userService.login();
+    this.router.navigate(['/']);
+  }
 }
