@@ -2,18 +2,17 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Subscription, filter, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, catchError, filter, tap } from 'rxjs';
 
 let apiUrl = environment.appUrl;
 @Injectable({
   providedIn: 'root'
 })
 export class UserService implements OnDestroy{
-
   user: User | undefined | null;
 
   private user$$ = new BehaviorSubject<undefined | null | User>(undefined);
-  user$ = this.user$$.asObservable();
+  public user$ = this.user$$.asObservable();
 
   get isLogged(): boolean {
     return !!this.user;
@@ -22,10 +21,10 @@ export class UserService implements OnDestroy{
   subscription: Subscription;
 
   constructor(private http: HttpClient) {
-
+   const token = localStorage.getItem('token') || "";
    this.subscription = this.user$.pipe(
     filter((val): val is User | null => val !== undefined))
-    .subscribe(user => {
+    .subscribe((user: any): any => {
         this.user = user;
     })
   }
@@ -39,13 +38,13 @@ get token() {
   register(email: string, username: string, password: string, rePassword: string) {
 
     return this.http.post<any>('/users/register', { email, username, password, rePassword })
-    
+    .pipe(tap((user: any): any => this.user$$.next(user)))
   }
 
   login(email: string, password: string) {
     
-    return this.http.post<any>('/users/login', { email, password })
-      .pipe(tap(user => {
+    return this.http.post<User>('/users/login', { email, password })
+      .pipe(tap((user: any): any => {
         localStorage.setItem('token', user.accessToken);
         this.user$$.next(user)
       })
@@ -53,8 +52,14 @@ get token() {
   }
 
   getProfile() {
-    return this.http.get<User>('users/profile')
-    .pipe(tap(user => this.user$$.next(user)));;
+    return this.http.get<User>('/users/me')
+    .pipe(tap((user: any): any => this.user$$.next(user))
+    /*catchError((err: any): any => {
+      this.user$$.next(null);
+      return [err];
+    })*/
+    
+    );;
   }
 
   logout(): void {

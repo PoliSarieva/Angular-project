@@ -13,7 +13,7 @@ isAuthenticating = true;
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe({
-      next: (user) => {
+      next: (user: any) => {
         this.userService.user = user;
         this.isAuthenticating = false;
       },

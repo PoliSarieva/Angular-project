@@ -12,7 +12,7 @@ export class MainReceptComponent implements OnInit{
   receptList: Recept[] = [];
 
   ngOnInit(): void {
-    this.apiService.getRecepts().subscribe((rec) => {
+    this.apiService.getRecepts().subscribe((rec: any) => {
       this.receptList = rec;
     }
     )

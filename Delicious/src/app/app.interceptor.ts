@@ -13,20 +13,21 @@ export class AppInterceptor implements HttpInterceptor {
     constructor(private userService: UserService) {}
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        
+        const token = this.userService.token;
         if(req.url.startsWith('/users')) {
             req = req.clone({ url: req.url.replace('/users', apiUrl),
+            
             //headers: req.headers.set('X-Authorization', this.userService.token)
             //setHeaders: {'X-Authorization': this.userService.token}
                               
         })
         }
 
-        /*if (lsToken) {
+        if (token) {
             req = req.clone({
                 headers: req.headers.set('X-Authorization', this.userService.token)
             })
-        }*/
+        }
         return next.handle(req);
     }
 }

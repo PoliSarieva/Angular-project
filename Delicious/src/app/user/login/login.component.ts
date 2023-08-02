@@ -22,7 +22,7 @@ return;
 
 const { email, password }  = form.value;
     this.userService.login(email!,  password!)
-      .subscribe(user => {
+      .subscribe((user: any) => {
         this.userService.user = user;
         //console.log(`login: ${user}`);
         this.router.navigate(['/']);

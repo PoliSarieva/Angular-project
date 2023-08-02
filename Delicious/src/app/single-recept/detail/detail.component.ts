@@ -19,7 +19,7 @@ export class DetailComponent implements OnInit {
 
   fetchRec(): void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.apiService.getOneRecept(id).subscribe((rec) => {
+    this.apiService.getOneRecept(id).subscribe((rec: any) => {
       this.recept = rec;
     })
   }
