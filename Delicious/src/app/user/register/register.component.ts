@@ -36,7 +36,7 @@ export class RegisterComponent {
         this.userService.user = user;
   
         
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
       }
       );
 

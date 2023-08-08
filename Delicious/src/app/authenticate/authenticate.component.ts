@@ -6,19 +6,19 @@ import { UserService } from '../user/user.service';
   templateUrl: './authenticate.component.html',
   styleUrls: ['./authenticate.component.css']
 })
-export class AuthenticateComponent implements OnInit{
+export class AuthenticateComponent{
 isAuthenticating = true;
 
   constructor (private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getProfile().subscribe({
+    this.userService.setProfile().subscribe({
       next: (user: any) => {
-        this.userService.user = user;
+        //this.userService.user = user;
         this.isAuthenticating = false;
       },
       error: () => {
-        this.userService.user = undefined;
+        //this.userService.user = undefined;
         this.isAuthenticating = false;
       }
     })

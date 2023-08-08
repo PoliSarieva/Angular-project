@@ -1,5 +1,5 @@
 export interface User {
-    accessToken(arg0: string, accessToken: any): unknown;
+    //accessToken(arg0: string, accessToken: any): unknown;
     email: string,
-    firstName: string,
+    username: string,
 }

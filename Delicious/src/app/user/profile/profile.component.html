@@ -1,1 +1,64 @@
-<p>profile works!</p>
+ 
+
+    <div id="wrapper" class="container">
+        <div class="profile">
+            <img src="/assets/user.avif" alt="user">
+
+            <ng-container id="profile-description">
+                    <h3>Профил</h3>
+                <div class="subtitle">
+                    <p>Потребителско име: </p>
+                    <p>{{profileDetails.username}}</p>
+                </div>
+                <div class="subtitle">
+                    <p>Email: </p>
+                    <p>{{profileDetails.email}}</p>
+                </div>
+<!--
+                <div id="action-buttons">
+                    <button class="button">Промени</button>
+                </div>-->
+            </ng-container>
+
+            <!--EDIT MODE-->
+            <!--
+            <ng-container *ngIf="isEditMode">
+                <form [formGroup]="form" >
+                <div class="subtitle">
+                    <p>Потребителско име: </p>
+                    <input type="text" name="username" id="username" value="Johny"
+                    formControlName="username" />
+                </div>
+
+               
+                <ng-container *ngIf="form.get('username')?.touched">
+                    <p class="error" *ngIf="form.get('username')?.errors?.['required']">Потребителскот име е задължително!</p>
+                    <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+                        Името трябва да бъде повече от 5 символа
+                    </p>
+                </ng-container>
+                
+                <div class="subtitle">
+                    <p>Email: </p>
+                    <input type="email" name="email" id="email" value="john.doe@gmail.com"
+                    formControlName="email" />
+                </div>
+
+                
+                <ng-container *ngIf="form.get('email')?.touched">
+                    <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email е задължителен!</p>
+                    <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">Email не е валиден!</p>
+                </ng-container>
+
+                <div id="action-buttons">
+                    <button class="button">Запази</button>
+                </div>
+            </form>
+            </ng-container>
+        -->
+
+        
+        </div>
+    </div>
+
+    
