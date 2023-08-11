@@ -32,9 +32,6 @@
  
 }
 
-/* .fruit:hover {
-  transform: scale(1.3);
-} */
 .fruit img {
   height:12vw; 
 }
@@ -44,6 +41,7 @@
   letter-spacing: 2px;
   color: rgb(15, 18, 16);
   text-decoration: underline;
+  text-align: center;
 }
 
 .details-btn {

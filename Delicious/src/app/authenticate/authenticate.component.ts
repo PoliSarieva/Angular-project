@@ -14,11 +14,9 @@ isAuthenticating = true;
   ngOnInit(): void {
     this.userService.setProfile().subscribe({
       next: (user: any) => {
-        //this.userService.user = user;
         this.isAuthenticating = false;
       },
       error: () => {
-        //this.userService.user = undefined;
         this.isAuthenticating = false;
       }
     })
