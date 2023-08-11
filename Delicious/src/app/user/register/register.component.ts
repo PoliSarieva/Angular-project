@@ -23,7 +23,7 @@ export class RegisterComponent {
     )
   });
 
-  constructor(private fb: FormBuilder, private userService: UserService,private router: Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   onSubmit() {
     if (this.form.invalid) {
@@ -34,8 +34,8 @@ export class RegisterComponent {
     this.userService.register(email!, username!, password!, rePassword!)
       .subscribe(user => {
         this.userService.user = user;
-  
-        
+
+
         this.router.navigate(['/']);
       }
       );

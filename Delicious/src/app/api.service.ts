@@ -27,6 +27,16 @@ export class ApiService {
 
   createRecept(title: string, imageUrl: string, nutrients: string, preparation: string ) {
     const {appUrl} = environment;
-    return this.http.post<Recept>(`${appUrl}/recept`, {title, imageUrl, nutrients, preparation })
+    return this.http.post<Recept>(`${appUrl}/recept`, {title: title, imageUrl: imageUrl, nutrients: nutrients, preparation: preparation })
+  }
+
+  editRecept(id: string, title: string, imageUrl: string, nutrients: string, preparation: string ) {
+    const {appUrl} = environment;
+    return this.http.put<Recept>(`${appUrl}/recept/${id}`, {title: title, imageUrl: imageUrl, nutrients: nutrients, preparation: preparation })
+  }
+
+  deleteRecept(id: string) {
+    const {appUrl} = environment;
+    return this.http.delete<Recept>(`${appUrl}/recept/${id}`)
   }
 }

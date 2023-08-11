@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
-import { Observable, catchError, tap, throwError } from "rxjs";
+import { Observable, catchError, of, switchMap, take, tap, throwError, zip } from "rxjs";
 import { environment } from "src/environments/environment";
 import { UserService } from "./user/user.service";
 import { Router } from "@angular/router";
@@ -30,6 +30,34 @@ export class AppInterceptor implements HttpInterceptor {
             });
         }
         return next.handle(req)/*.pipe(
+            catchError(err => of(err).pipe(
+                switchMap((err) => {
+                    if (err.status === 401) {
+                        return [[err, null]]
+                    }
+                    return zip([err], this.userService.user$).pipe(take(1));
+                }),
+                switchMap(([err, user]) => {
+                    if(err.status === 401) {
+                        if (!user) {
+                            this.router.navigate(['/login']);
+                        } else {
+                            this.router.navigate(['/']);
+                        }
+                    } else {
+                        this.router.navigate(['/error']);
+                    }
+                    return throwError(() => err)
+                })
+            ))
+        )*/
+        
+        
+        
+        
+        
+        
+        /*.pipe(
             tap(() => {
                 console.log("intercept");
             }),

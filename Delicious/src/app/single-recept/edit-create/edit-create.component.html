@@ -1,6 +1,7 @@
 <section id="create">
     <div class="form">
-        <h2>Добави рецепта</h2>
+        <h2 *ngIf="isAddMode">Добави рецепта</h2>
+        <h2 *ngIf="!isAddMode">Промени рецепта</h2>
         <form class="create-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             
             <input type="text" name="title" id="title" placeholder="заглавие" formControlName="title"/>
@@ -29,7 +30,8 @@
                     <p class="error" *ngIf="form.get('preparation')?.errors?.['required']">Полето е задължително!</p>
                 </ng-container>
 
-            <button type="submit" [disabled]="form.invalid">Добави</button>
+            <button type="submit" [disabled]="form.invalid" *ngIf="isAddMode">Добави</button>
+            <button type="submit" [disabled]="form.invalid" *ngIf="!isAddMode">Промени</button>
         </form>
     </div>
 </section>

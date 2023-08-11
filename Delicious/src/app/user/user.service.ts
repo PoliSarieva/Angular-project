@@ -43,6 +43,7 @@ get isLogged(): boolean {
 
     return this.http.post<any>('/users/register', { email, username, password, rePassword })
     .pipe(tap((user: any): any => {
+      localStorage.removeItem('token');
       localStorage.setItem('token', user.accessToken);
       this.user$$.next(user)
     }))
@@ -52,6 +53,7 @@ get isLogged(): boolean {
     
     return this.http.post<User>('/users/login', { email, password })
       .pipe(tap((user: any): any => {
+        localStorage.removeItem('token');
         localStorage.setItem('token', user.accessToken);
         this.getUserProfile(user._id).subscribe((res) => {
           this.currentUser = res;
@@ -84,7 +86,7 @@ get isLogged(): boolean {
         tap((user: any): any => this.user$$.next(user)),
         catchError((err: any): any => {
           this.user$$.next(null);
-          return [err];
+          return throwError(() => err);
         }));
   }
 

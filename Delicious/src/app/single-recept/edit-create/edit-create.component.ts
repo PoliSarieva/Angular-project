@@ -6,10 +6,10 @@ import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-new-recept',
-  templateUrl: './new-recept.component.html',
-  styleUrls: ['./new-recept.component.css']
+  templateUrl: './edit-create.component.html',
+  styleUrls: ['./edit-create.component.css']
 })
-export class NewReceptComponent implements OnInit {
+export class EditCreateReceptComponent implements OnInit {
   form!: FormGroup;
   //id: string;
   isAddMode!: boolean;
@@ -38,9 +38,6 @@ export class NewReceptComponent implements OnInit {
         .pipe(first())
         .subscribe(x => this.form.patchValue(x));
     }
-
-    //get f() {return this.form.controls}
-
   }
 
   onSubmit() {
@@ -59,7 +56,7 @@ export class NewReceptComponent implements OnInit {
 
     this.apiService.createRecept(title!, imageUrl!, nutrients!, preparation!)
       .subscribe(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/main-recept']);
       });
   }
 
@@ -69,7 +66,7 @@ export class NewReceptComponent implements OnInit {
 
     this.apiService.editRecept(id, title!, imageUrl!, nutrients!, preparation!)
       .subscribe(() => {
-        this.router.navigate(['/']);
+        this.router.navigate([`/main-recept/${id}`]);
       });
   }
 

@@ -10,9 +10,9 @@
                 <p id="details-preparation">{{ recept.preparation }}</p>
             </div>
             <!--Edit and Delete are only for creator-->
-            <div id="action-buttons">
-                <a href="" id="edit-btn">Edit</a>
-                <a href="" id="delete-btn">Delete</a>
+            <div id="action-buttons" *ngIf="isOwner">
+                <a routerLink="edit" id="edit-btn">Промени</a>
+                <a (click)="delete()" id="delete-btn">Изтрии</a>
             </div>
         </div>
     </div>

@@ -26,14 +26,4 @@ this.userService.logout();
 this.router.navigate(['/']);
 }
 
-
-
-  /*constructor(private apiService: ApiService) { }
-
-  ngOnInit(): void {
-    this.apiService.getData().subscribe((data) => {
-      console.log(data);
-    }
-    )
-  }*/
 }

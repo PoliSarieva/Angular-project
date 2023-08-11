@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  //isEditMode: boolean = false;
 
   profileDetails: User = {
     username: '',
@@ -36,31 +35,6 @@ export class ProfileComponent implements OnInit {
     }
     )
 
-    /*const {username, email} = this.userService.user!;
-    this.profileDetails = {
-      username, email
-    }
     
-    this.form.setValue({
-      username, email
-    })*/
-
   }
-
-  /*tooggleEditMode(): void {
-    this.isEditMode = !this.isEditMode;
-  }
-
-
-  saveProfileHandler(): void {
-    if (this.form.invalid) {
-      return;
-    }
-
-    this.profileDetails = { ...this.form.value } as User;
-    const { username, email } = this.profileDetails;
-    this.userService.updateProfile(username!, email!).subscribe(() => {
-      this.tooggleEditMode();
-    })
-  }*/
 }

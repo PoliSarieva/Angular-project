@@ -18,13 +18,11 @@ if (form.invalid) {
 return;
 }
 
-//this.userService.login();
 
 const { email, password }  = form.value;
     this.userService.login(email!,  password!)
       .subscribe((user: any) => {
         this.userService.user = user;
-        //console.log(`login: ${user}`);
         this.router.navigate(['/']);
       }
       );
