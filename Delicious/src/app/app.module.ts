@@ -21,12 +21,12 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     HttpClientModule,
     UserModule,
     ReceptsModule,
     SingleReceptModule,
+    AppRoutingModule,
     FormsModule,
   ],
   providers: [appInterceptorProvider],

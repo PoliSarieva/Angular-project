@@ -10,7 +10,7 @@
                 <p class="error" *ngIf="form.get('title')?.errors?.['required']">Полето е задължително!</p>
             </ng-container>
 
-            <input type="text" name="imageUrl" id="recept-image" placeholder="снимка" formControlName="imageUrl"/>
+            <input type="text" name="imageUrl" id="recept-image" placeholder="url на снимка" formControlName="imageUrl"/>
 
             <ng-container *ngIf="form.get('imageUrl')?.touched">
                 <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">Полето е задължително!</p>
